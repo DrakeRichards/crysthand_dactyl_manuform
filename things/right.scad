@@ -1632,10 +1632,10 @@ union () {
                   translate ([-5, 0, 0]) {
                     translate ([5, 0, 0]) {
                       union () {
-                        translate ([9.25, 0, 0]) {
+                        translate ([10, 0, 0]) {
                           cylinder ($fn=20, h=20, r1=1.4, r2=1.4, center=true);
                         }
-                        translate ([-9.25, 0, 0]) {
+                        translate ([-10, 0, 0]) {
                           cylinder ($fn=20, h=20, r1=1.4, r2=1.4, center=true);
                         }
                         union () {
@@ -1675,9 +1675,9 @@ union () {
                     }
                     translate ([-14, 0, 0]) {
                       union () {
-                        cylinder ($fn=20, h=20, r1=3.45, r2=3.45, center=true);
-                        translate ([0, 0, 1.25]) {
-                          cylinder ($fn=20, h=1, r1=5, r2=5, center=true);
+                        cylinder ($fn=20, h=20, r1=4.1, r2=4.1, center=true);
+                        translate ([0, 0, -1.25]) {
+                          cylinder ($fn=20, h=1, r1=4.6, r2=4.6, center=true);
                         }
                       }
                     }

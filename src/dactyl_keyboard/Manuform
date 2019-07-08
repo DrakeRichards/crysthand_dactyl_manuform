@@ -1292,8 +1292,8 @@
     hole (with-fn 20 (cylinder [1.4 1.4] thickness))
     ]
     (union 
-      (translate [9.25 0 0] hole)
-      (translate [-9.25 0 0] hole)
+      (translate [10 0 0] hole)
+      (translate [-10 0 0] hole)
       (rounded-cube 10.55 5.55 thickness 1.25)
     )
   )
@@ -1352,8 +1352,8 @@
 (def back-panel 
   (let [
       half_wall (/ panel_y 2)
-      din_hole_radius 3.45
-      din_hole_outset_radius 5
+      din_hole_radius 4.1
+      din_hole_outset_radius 4.6
       din_hole_outset_depth 1
       back-plate 
         (minkowski 
@@ -1382,7 +1382,7 @@
                     (translate [-14 0 0] 
                         (union 
                           (with-fn 20 (cylinder [din_hole_radius din_hole_radius] thickness-cut))
-                          (translate [0 0 (/ (- wall-thickness din_hole_outset_depth) 2)]
+                          (translate [0 0 (/ (- wall-thickness din_hole_outset_depth) -2)]
                             (with-fn 20 (cylinder [din_hole_outset_radius din_hole_outset_radius] din_hole_outset_depth))
                           )
                         )
