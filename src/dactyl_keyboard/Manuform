@@ -46,7 +46,7 @@
 ;;;;;;;;;random;;;;;;;;;;
 ;@@@@@@@@@@-@@@@@@@@@@@@@@@@
 ;;;0= box 1=cherry 2= Alps
-(def switch-type 0)
+(def switch-type 1)
 
 
 
