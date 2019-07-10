@@ -57,7 +57,7 @@
 ;(def centerrow  2)
 (def centerrow (- nrows 3.5))             ;default 3 controls front-back tilt
 (def centercol 3)                       ;default 3 controls left-right tilt / tenting (higher number is more tenting)
-(def tenting-angle (/ (* π 22) 180))            ;default 15 or, change this for more precise tenting control
+(def tenting-angle (/ (* π 15) 180))            ;default 15 or, change this for more precise tenting control
 ;(def tenting-angle (/ π 12))            ; or, change this for more precise tenting control
 (def column-style
   (if (> nrows 5) :orthographic :fixed))  ; options include :standard, :orthographic, and :fixed
@@ -68,7 +68,7 @@
   (>= column 4) [0 -12 5.64]            ; original [0 -5.8 5.64]
   :else [0 0 0]))
 
-(def thumb-offsets [6 -3 7])
+(def thumb-offsets [0 0 7])
 
 (def keyboard-z-offset (if (>= nrows 5) 20 25))  ; default (> nrows 5) 9 14)----options include :standard, :orthographic, and :fixed)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
