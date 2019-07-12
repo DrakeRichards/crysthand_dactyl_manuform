@@ -1589,33 +1589,33 @@ mirror ([-1, 0, 0]) {
                           }
                           union () {
                             difference () {
-                              cube ([11, 6, 20], center=true);
+                              cube ([14, 6, 20], center=true);
                               union () {
-                                translate ([5.5, 3.0, 0]) {
+                                translate ([7.0, 3.0, 0]) {
                                   cube ([2.5, 2.5, 22.0], center=true);
                                 }
-                                translate ([-5.5, 3.0, 0]) {
+                                translate ([-7.0, 3.0, 0]) {
                                   cube ([2.5, 2.5, 22.0], center=true);
                                 }
-                                translate ([-5.5, -3.0, 0]) {
+                                translate ([-7.0, -3.0, 0]) {
                                   cube ([2.5, 2.5, 22.0], center=true);
                                 }
-                                translate ([5.5, -3.0, 0]) {
+                                translate ([7.0, -3.0, 0]) {
                                   cube ([2.5, 2.5, 22.0], center=true);
                                 }
                               }
                             }
                             union () {
-                              translate ([4.25, 1.75, 0]) {
+                              translate ([5.75, 1.75, 0]) {
                                 cylinder (h=20, r1=1.25, r2=1.25, center=true);
                               }
-                              translate ([-4.25, 1.75, 0]) {
+                              translate ([-5.75, 1.75, 0]) {
                                 cylinder (h=20, r1=1.25, r2=1.25, center=true);
                               }
-                              translate ([-4.25, -1.75, 0]) {
+                              translate ([-5.75, -1.75, 0]) {
                                 cylinder (h=20, r1=1.25, r2=1.25, center=true);
                               }
-                              translate ([4.25, -1.75, 0]) {
+                              translate ([5.75, -1.75, 0]) {
                                 cylinder (h=20, r1=1.25, r2=1.25, center=true);
                               }
                             }
@@ -1624,9 +1624,9 @@ mirror ([-1, 0, 0]) {
                       }
                       translate ([-14, 0, 0]) {
                         union () {
-                          cylinder ($fn=20, h=20, r1=4.1, r2=4.1, center=true);
-                          translate ([0, 0, -1.25]) {
-                            cylinder ($fn=20, h=1, r1=4.6, r2=4.6, center=true);
+                          cylinder ($fn=20, h=20, r1=3.7, r2=3.7, center=true);
+                          translate ([0, 0, -1.0]) {
+                            cylinder ($fn=20, h=1.5, r1=4.6, r2=4.6, center=true);
                           }
                         }
                       }

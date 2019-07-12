@@ -1294,7 +1294,7 @@
     (union 
       (translate [10 0 0] hole)
       (translate [-10 0 0] hole)
-      (rounded-cube 11 6 thickness 1.25)
+      (rounded-cube 14 6 thickness 1.25)
     )
   )
 )
@@ -1352,9 +1352,9 @@
 (def back-panel 
   (let [
       half_wall (/ panel_y 2)
-      din_hole_radius 4.1
+      din_hole_radius 3.7
       din_hole_outset_radius 4.6
-      din_hole_outset_depth 1
+      din_hole_outset_depth 1.5
       back-plate 
         (minkowski 
           (cube panel_x panel_z half_wall)          
