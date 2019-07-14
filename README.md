@@ -17,9 +17,3 @@ All screws used are m3x12 for the dactyl.
 Brass knurled nuts m3x5x5 are used for to attatch the dactyl top and bottom case and the Manuform top and bottom cover.
 
 TRRS jack being used is SJ1-43502PM. USB holder is Adafruit "PANEL MOUNT CABLE USB C TO MICRO".
-
-
-
-
-
-
