@@ -46,7 +46,7 @@
 ;;;;;;;;;random;;;;;;;;;;
 ;@@@@@@@@@@-@@@@@@@@@@@@@@@@
 ;;;0= box 1=cherry 2= Alps
-(def switch-type 1)
+(def switch-type 3)
 
 
 
@@ -188,6 +188,27 @@
            (->> plate-half
                 (mirror [1 0 0])
                 (mirror [0 1 0])))))
+;Cherry (removeable)
+(def cherry-removeable
+  (let [top-wall (->> (cube (+ cherry-keyswitch-width 3) 1.5 plate-thickness)
+                      (translate [0
+                                  (+ (/ 1.5 2) (/ cherry-keyswitch-height 2))
+                                  (/ plate-thickness 2)]))
+        left-wall (->> (cube 1.5 (+ cherry-keyswitch-height 3) plate-thickness)
+                       (translate [(+ (/ 1.5 2) (/ cherry-keyswitch-width 2))
+                                   0
+                                   (/ plate-thickness 2)]))
+        switch-notch (->> (cube 4.5 2 (- plate-thickness 1.5))
+                          (translate [0 
+                                      (/ cherry-keyswitch-height 2) 
+                                      ;(- plate-thickness 1.5)
+                                      1.25
+                                      ]))
+        plate-half (difference (union top-wall left-wall) switch-notch)]
+    (union plate-half
+           (->> plate-half
+                (mirror [1 0 0])
+                (mirror [0 1 0])))))
 
 (def single-plate-rotated
   (let [top-wall (->> (cube (+ alps-keyswitch-height 3) 1.5 plate-thickness)
@@ -209,8 +230,10 @@
 (def single-plate
 		(if (== switch-type 0) (->> box-single-plate(rotate (/ π 2) [0 0 1]))
 		(if (== switch-type 1) cherry-single-plate
-		(if (== switch-type 2) Matias-single-plate )))
+		(if (== switch-type 2) Matias-single-plate 
+    (if (== switch-type 3) cherry-removeable ))))
 	)
+
 ;;;;;;;;;;;;;;;;
 ;; SA Keycaps ;;
 ;;;;;;;;;;;;;;;;
