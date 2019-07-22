@@ -5,7 +5,7 @@
             [scad-clj.model :refer :all]
             [unicode-math.core :refer :all]))
 
-(def nrows 5)
+(def nrows 4)
 (def ncols 6)
 
 
@@ -57,7 +57,7 @@
 ;(def centerrow  2)
 (def centerrow (- nrows 3.5))             ;default 3 controls front-back tilt
 (def centercol 3)                       ;default 3 controls left-right tilt / tenting (higher number is more tenting)
-(def tenting-angle (/ (* π 15) 180))            ;default 15 or, change this for more precise tenting control
+(def tenting-angle (/ (* π 10) 180))            ;default 15 or, change this for more precise tenting control
 ;(def tenting-angle (/ π 12))            ; or, change this for more precise tenting control
 (def column-style
   (if (> nrows 5) :orthographic :fixed))  ; options include :standard, :orthographic, and :fixed
@@ -68,7 +68,7 @@
   (>= column 4) [0 -12 5.64]            ; original [0 -5.8 5.64]
   :else [0 0 0]))
 
-(def thumb-offsets [0 0 7])
+(def thumb-offsets [-2 -6 7])
 
 (def keyboard-z-offset (if (>= nrows 5) 20 25))  ; default (> nrows 5) 9 14)----options include :standard, :orthographic, and :fixed)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
@@ -856,7 +856,7 @@
 ; 
 
 (def usb-holder-thickness 5)
-(def usb-holder-size [5.5 33.34 18.4 ])	;;5.5 33.34 18.4
+(def usb-holder-size [5.5 34.00 19.0 ])	;;5.5 33.34 18.4
 (def usb-holder-position 
   (map + 
     (key-position 0 (- centerrow 0) (wall-locate3 -1 0)) 
@@ -899,8 +899,8 @@
          (translate [(+ (first usb-holder-position ) 2) (second usb-holder-position) (last usb-holder-position)]))
 		 (->>(apply cube usb-hole-size-left)
          (translate [(+ (first usb-holder-position ) 2) (- (second usb-holder-position) 10) (last usb-holder-position)]))
-		 (->>(apply cube usb-hole-size-right)
-         (translate [(+ (first usb-holder-position ) 0.5) (+ (second usb-holder-position) 10) (last usb-holder-position)]))
+		 ;(->>(apply cube usb-hole-size-right)
+     ;    (translate [(+ (first usb-holder-position ) 0.5) (+ (second usb-holder-position) 10) (last usb-holder-position)]))
 		 )))
 
 (def trrs-holder-position (key-position 2. 1 (map + (wall-locate1 0 (+ 7.8 (* 0.13 nrows))) [0 (/ mount-height 2) 0])))
@@ -937,8 +937,8 @@
 
 
 
-(def teensy-width 20)
-(def teensy-height 12)
+(def teensy-width 22)
+(def teensy-height 14)
 (def teensy-length 33)
 (def teensy2-length 53)
 (def teensy-pcb-thickness 2)
