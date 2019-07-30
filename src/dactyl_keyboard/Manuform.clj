@@ -5,7 +5,7 @@
             [scad-clj.model :refer :all]
             [unicode-math.core :refer :all]))
 
-(def nrows 4)
+(def nrows 5)
 (def ncols 6)
 
 
@@ -46,13 +46,13 @@
 ;;;;;;;;;random;;;;;;;;;;
 ;@@@@@@@@@@-@@@@@@@@@@@@@@@@
 ;;;0= box 1=cherry 2= Alps
-(def switch-type 3)
+(def switch-type 1)
 
 
 
 										;;dfefault 1
 
-(def α (deg2rad 15))                        ;default 15 curvature of the columns
+(def α (deg2rad 20))                        ;default 15 curvature of the columns
 (def β (deg2rad 5))                        ;default 5 curvature of the rows
 ;(def centerrow  2)
 (def centerrow (- nrows 3.5))             ;default 3 controls front-back tilt
@@ -104,8 +104,8 @@
 (def keyswitch-height 14.15) ;; Was 14.1, then 14.25
 (def keyswitch-width 14.65);Nub side original 14.5 last 14.8----14.65 works for both.  box slightly loose
 
-(def cherry-keyswitch-height 14.4) ;; Was 14.1, then 14.25
-(def cherry-keyswitch-width 14.4)
+(def cherry-keyswitch-height 14.25) ;; Was 14.1, then 14.25
+(def cherry-keyswitch-width 14.25)
 
 (def alps-keyswitch-height 12.9) ;;12.9
 (def alps-keyswitch-width 15.5)  ;;15.5
@@ -995,6 +995,13 @@
                     (/ (+ 6 teensy-width) 2)])
            ))
 
+;(def pro-micro-width )
+;(def pro-micro-height )
+;(def pro-micro-length )
+;(def pro-micro-clearance )
+;(def pro-micro-headers-width )
+;(def pro-micro-headers-height )
+
 (def wire-post-height 7)
 (def wire-post-overhang 3.5)
 (def wire-post-diameter 2.6)
@@ -1448,7 +1455,8 @@
         back-panel
         connectors
         thumb
-        thumb-connectors            
+        thumb-connectors
+        ;caps            
         
         ; back-panel-hole-inset
         (difference
@@ -1456,10 +1464,7 @@
             (if (==  bottom-cover 1) screw-insert-outers)
             ; teensy-holder
             ; original_usb_holder
-            (difference 
-                usb-holder
-                usb-holder-hole
-            )
+            ; (difference usb-holder usb-holder-hole)
             ; trrs-holder
             ; (translate [100 100 100]         
             ; )
