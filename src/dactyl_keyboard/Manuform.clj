@@ -21,7 +21,7 @@
 ;@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ;;;;;;;;;Wrist rest;;;;;;;;;;
 ;@@@@@@@@@@@@@@@@@@@@@@@@@@
-(def wrist-rest-on 0) 						;;0 for no rest 1 for a rest connection cut out in bottom case
+(def wrist-rest-on 1) 						;;0 for no rest 1 for a rest connection cut out in bottom case
 (def wrist-rest-back-height 35)				;;height of the back of the wrist rest--Default 34
 (def wrist-rest-angle 20) 				 ;;angle of the wrist rest--Default 20
 (def wrist-rest-rotation-angle 9)			;;0 default The angle in counter clockwise the wrist rest is at
@@ -30,7 +30,7 @@
 
 
 ;;Wrist rest to case connections
-(def right_wrist_connecter_x   (if (== ncols 5) 13 25))
+(def right_wrist_connecter_x   (if (== ncols 5) 13 30))
 (def middle_wrist_connecter_x   (if (== ncols 5) -5 0))
 (def left_wrist_connecter_x   (if (== ncols 5) -25 -25))
 (def wrist_right_nut_y (if (== ncols 5) 10 20.5))
@@ -52,12 +52,12 @@
 
 										;;dfefault 1
 
-(def α (deg2rad 20))                        ;default 15 curvature of the columns
+(def α (deg2rad 17))                        ;default 15 curvature of the columns
 (def β (deg2rad 5))                        ;default 5 curvature of the rows
 ;(def centerrow  2)
-(def centerrow (- nrows 3.5))             ;default 3 controls front-back tilt
+(def centerrow (- nrows 3.0))             ;default 3 controls front-back tilt
 (def centercol 3)                       ;default 3 controls left-right tilt / tenting (higher number is more tenting)
-(def tenting-angle (/ (* π 10) 180))            ;default 15 or, change this for more precise tenting control
+(def tenting-angle (/ (* π 20) 180))            ;default 15 or, change this for more precise tenting control
 ;(def tenting-angle (/ π 12))            ; or, change this for more precise tenting control
 (def column-style
   (if (> nrows 5) :orthographic :fixed))  ; options include :standard, :orthographic, and :fixed
@@ -68,7 +68,7 @@
   (>= column 4) [0 -12 5.64]            ; original [0 -5.8 5.64]
   :else [0 0 0]))
 
-(def thumb-offsets [-2 -6 7])
+(def thumb-offsets [-3 -8 18])
 
 (def keyboard-z-offset (if (>= nrows 5) 20 25))  ; default (> nrows 5) 9 14)----options include :standard, :orthographic, and :fixed)               ; controls overall height; original=9 with centercol=3; use 16 for centercol=2
 
@@ -209,6 +209,10 @@
            (->> plate-half
                 (mirror [1 0 0])
                 (mirror [0 1 0])))))
+
+(def encoder-hole
+  
+)
 
 (def single-plate-rotated
   (let [top-wall (->> (cube (+ alps-keyswitch-height 3) 1.5 plate-thickness)
@@ -473,7 +477,7 @@
        (rotate (deg2rad (lower2thumbRoyY -1)) [0 1 0])
        (rotate (deg2rad  48) [0 0 1])
        (translate thumborigin)
-       (translate [-29 -40 -13])
+       (translate [-29 -40 -9])
       boo 
        ))
 (defn thumb-ml-place [shape]
@@ -491,7 +495,7 @@
        (rotate (deg2rad (lower2thumbRoyY 0)) [0 1 0])
        (rotate (deg2rad  54) [0 0 1])
        (translate thumborigin)
-       (translate [-37.8 -55.3 -25.3])
+       (translate [-42.8 -50.3 -20.3]) ;[-37.8 -55.3 -25.3]
       boo 
        ))
 (defn thumb-bl-place [shape]
@@ -500,7 +504,7 @@
        (rotate (deg2rad (lower2thumbRoyY -2)) [0 1 0])
        (rotate (deg2rad  52) [0 0 1])
        (translate thumborigin)
-       (translate [-56.3 -43.3 -23.5])
+       (translate [-61.3 -35.3 -23.5])
       boo 
        ))
 
@@ -995,13 +999,19 @@
                     (/ (+ 6 teensy-width) 2)])
            ))
 
-;(def pro-micro-width )
-;(def pro-micro-height )
-;(def pro-micro-length )
-;(def pro-micro-clearance )
-;(def pro-micro-headers-width )
-;(def pro-micro-headers-height )
+(comment
+(def pro-micro-width )
+(def pro-micro-height )
+(def pro-micro-length )
+(def pro-micro-clearance )
+(def pro-micro-headers-width )
+(def pro-micro-headers-height )
 
+(def pm-holder-rail-thickness 3)
+(def pm-holder-rail 
+  (cube pro-micro-length (+ pro-micro-height 0.5) pm-holder-rail-thickness)
+)
+)
 (def wire-post-height 7)
 (def wire-post-overhang 3.5)
 (def wire-post-diameter 2.6)
@@ -1048,7 +1058,7 @@
 
 (defn screw-insert-all-shapes [bottom-radius top-radius height]
   (union (screw-insert 0 0         bottom-radius top-radius height)
-         (screw-insert 0 lastrow   bottom-radius top-radius height)
+         (screw-insert 0 (- lastrow 0.5)  bottom-radius top-radius height)
          (screw-insert 2 (+ lastrow 0.3)  bottom-radius top-radius height)
          (screw-insert 3 0         bottom-radius top-radius height)
          (screw-insert lastcol 1   bottom-radius top-radius height)
@@ -1058,7 +1068,7 @@
 (def screw-insert-top-radius (/ 5.1 2))
 (def screw-insert-holes  (screw-insert-all-shapes screw-insert-bottom-radius screw-insert-top-radius screw-insert-height))
 (def screw-insert-outers (screw-insert-all-shapes (+ screw-insert-bottom-radius 1.6) (+ screw-insert-top-radius 1.6) (+ screw-insert-height 1.5)))
-(def screw-insert-screw-holes  (screw-insert-all-shapes 1.7 1.7 350))
+(def screw-insert-screw-holes  (screw-insert-all-shapes 2 2 350))
 
 
 
@@ -1236,7 +1246,7 @@
 							rest-case-connectors
 							rest-case-cuts
 							cut-bottom
-					;	wrest-wall-cut
+						;wrest-wall-cut
 							)
 
 					)
@@ -1464,7 +1474,7 @@
             (if (==  bottom-cover 1) screw-insert-outers)
             ; teensy-holder
             ; original_usb_holder
-            ; (difference usb-holder usb-holder-hole)
+             ;(difference usb-holder usb-holder-hole)
             ; trrs-holder
             ; (translate [100 100 100]         
             ; )
@@ -1511,8 +1521,8 @@
 			;				trrs-holder
 
 						   )
-                                 rj9-space
-                            original_usb_holder_hole
+                                 ;rj9-space
+                            ;original_usb_holder_hole
 						(if (== wrist-rest-on 1) (->> rest-case-cuts	(translate [(+ (first thumborigin ) 33) (- (second thumborigin) 50) 0])))
                           ;(->> usb-holder-hole(translate[20 0 0]))
 			;			  trrs-holder-hole
